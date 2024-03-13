@@ -17,7 +17,7 @@ class Perceptron(object):
         self.random_state = random_state
 
     def fit(self, X, y):
-        rgen = np.RandomState(self.random_state)
+        rgen = np.random.RandomState(self.random_state)
         self.w_ = rgen.normal(loc=0.0, scale = 0.01, size = 1 + X.shape[1])
         self.errors_ = []
 
@@ -41,14 +41,14 @@ class Perceptron(object):
 
 def plot_decision_regions(X, y, classifier, resolution = 0.02):
 
-    markers = ("s", "x", "o", "^", "v")
+    markers = ("s", "o", "^", "v","<")
     colors = ("red", "blue", "lightgreen", "gray", "cyan")
     cmap = ListedColormap(colors[:len(np.unique(y))])
 
     x1_min, x1_max = X[:,0].min() - 1, X[:,0].max() + 1
     x2_min, x2_max = X[:,1].min() - 1, X[:,1].max() + 1
 
-    xx1, xx2 = np.meshgrid(np.arrange(x1_min, x1_max, resolution)), np.meshgrid(np.arrange(x2_min, x2_max, resolution))
+    xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution), np.arange(x2_min, x2_max, resolution))
 
     Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
     Z = Z.reshape(xx1.shape)
@@ -66,3 +66,5 @@ def plot_decision_regions(X, y, classifier, resolution = 0.02):
                     marker=markers[idx],
                     label=cl,
                     edgecolor="black")
+        
+    plt.show()
