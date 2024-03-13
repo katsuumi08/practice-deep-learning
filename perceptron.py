@@ -1,4 +1,13 @@
 import numpy as np
+import scipy as sp
+from pandas import Series, DataFrame
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+import matplotlib as mpl
+import seaborn as sns
+
 
 class Perceptron(object):
 
@@ -29,7 +38,6 @@ class Perceptron(object):
         return np.where(self.net_input(X) >= 0.0, 1, -1)
     
 
-from matplotlib.colors import ListedColormap
 
 def plot_decision_regions(X, y, classifier, resolution = 0.02):
 
