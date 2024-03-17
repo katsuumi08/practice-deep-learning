@@ -67,4 +67,4 @@ def plot_decision_regions(X, y, classifier, resolution = 0.02):
                     label=cl,
                     edgecolor="black")
         
-    plt.show()
+   
